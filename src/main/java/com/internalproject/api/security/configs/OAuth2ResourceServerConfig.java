@@ -24,6 +24,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/users/**").permitAll()
                 .antMatchers("/api/login").permitAll()
+                .antMatchers("/**", "/csrf", "/v2/api-docs", "/swagger-resources/configuration/ui", "/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
