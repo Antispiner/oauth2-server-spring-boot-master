@@ -8,10 +8,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableAuthorizationServer
 @EnableResourceServer
 @SpringBootApplication
-public class ItrexApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ItrexApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
