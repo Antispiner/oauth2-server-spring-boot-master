@@ -33,9 +33,13 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Body of request for creating of user is empty!");
         }
 
-        boolean exist = userRepository.existsUserByUserName(request.getUsername());
-        if (exist) {
+        boolean existsUserByUserName = userRepository.existsUserByUserName(request.getUsername());
+        boolean existsUserByEmail = userRepository.existsUserByEmail(request.getEmail());
+        if (existsUserByUserName) {
             throw new IllegalArgumentException("User with username " + request.getUsername() + " already existed!");
+        }
+        if (existsUserByEmail) {
+            throw new IllegalArgumentException("User with email " + request.getEmail() + " already existed!");
         }
 
         User user = new User();

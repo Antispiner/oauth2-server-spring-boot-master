@@ -16,6 +16,7 @@ public class UserConverterImpl implements UserConverter {
         if (entity != null) {
             dto.setId(entity.getId());
             dto.setUsername(entity.getUserName());
+            dto.setFirstName(entity.getFirstName());
             dto.setLastName(entity.getLastName());
             dto.setEmail(entity.getEmail());
             dto.setRoles(entity.getRoles().stream().map(role -> role.getRole().name()).collect(Collectors.toSet()));

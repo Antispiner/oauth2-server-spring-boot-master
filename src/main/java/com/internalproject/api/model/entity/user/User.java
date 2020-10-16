@@ -32,6 +32,8 @@ public class User implements BaseEntity {
     private String password;
     @Column(name = "name")
     private String userName;
+    @Column(name = "first_name")
+    private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "verification_key")

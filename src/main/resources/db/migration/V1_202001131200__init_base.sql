@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 user_id SERIAL NOT NULL ,
 email varchar(255) UNIQUE,
+first_name varchar(255),
 last_name varchar(255),
 name varchar(255),
 password varchar(255),
@@ -56,5 +57,5 @@ key_word VARCHAR(255) DEFAULT 'word',
 PRIMARY KEY (internationalization_id)
 );
 
-INSERT INTO users( email, PASSWORD, last_name, name)
-  VALUES ('admin@test.com', /*admin1234*/'$2a$08$qvrzQZ7jJ7oy2p/msL4M0.l83Cd0jNsX6AJUitbgRXGzge4j035ha', 'petyx', 'admin');
+INSERT INTO users( email, PASSWORD, first_name, last_name, name)
+  VALUES ('admin@test.com', /*admin1234*/'$2a$08$qvrzQZ7jJ7oy2p/msL4M0.l83Cd0jNsX6AJUitbgRXGzge4j035ha', 'stive', 'test', 'admin');
