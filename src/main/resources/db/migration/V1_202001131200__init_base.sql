@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-user_id bigint NOT NULL AUTO_INCREMENT,
+user_id SERIAL NOT NULL ,
 email varchar(255) UNIQUE,
 last_name varchar(255),
 name varchar(255),
@@ -28,8 +28,8 @@ PRIMARY KEY (role_id)
 );
 
 
-DROP TABLE IF EXISTS user_role;
-CREATE TABLE user_role (
+DROP TABLE IF EXISTS user_roles;
+CREATE TABLE user_roles (
 user_id bigint NOT NULL,
 role_id int NOT NULL,
 PRIMARY KEY (user_id,role_id)
@@ -37,7 +37,7 @@ PRIMARY KEY (user_id,role_id)
 
 DROP TABLE IF EXISTS relatives;
 CREATE TABLE relatives (
-relative_id bigint NOT NULL AUTO_INCREMENT,
+relative_id SERIAL NOT NULL ,
 user_id bigint NOT NULL,
 language VARCHAR(10),
 email varchar(255) DEFAULT NULL,
@@ -48,10 +48,13 @@ PRIMARY KEY (relative_id)
 
 DROP TABLE IF EXISTS internationalization;
 CREATE TABLE internationalization (
-internationalization_id bigint NOT NULL AUTO_INCREMENT,
+internationalization_id SERIAL NOT NULL ,
 word_en VARCHAR(255) NOT NULL,
 word_ru VARCHAR(255) NOT NULL,
 group_enum VARCHAR(255) NOT NULL,
 key_word VARCHAR(255) DEFAULT 'word',
 PRIMARY KEY (internationalization_id)
 );
+
+INSERT INTO users( email, PASSWORD, last_name, name)
+  VALUES ('admin@test.com', /*admin1234*/'$2a$08$qvrzQZ7jJ7oy2p/msL4M0.l83Cd0jNsX6AJUitbgRXGzge4j035ha', 'petyx', 'admin');

@@ -10,3 +10,4 @@ INSERT INTO internationalization (word_en, word_ru, group_enum, key_word) VALUES
 INSERT INTO internationalization (word_en, word_ru, group_enum, key_word) VALUES ('Sing Up The email address you have entered is already registered.', '', 'messages', 'email_exist');
 INSERT INTO internationalization (word_en, word_ru, group_enum, key_word) VALUES ('Reset password. Please enter a registered user email.', '', 'messages', 'reset_password');
 INSERT INTO internationalization (word_en, word_ru, group_enum, key_word) VALUES ('Reset password  Your link has expired. Please reset your password to receive a new link.', '', 'messages', 'expired_restore_link');
+COMMIT;

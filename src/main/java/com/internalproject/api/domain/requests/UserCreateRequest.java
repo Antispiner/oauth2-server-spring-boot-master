@@ -30,5 +30,5 @@ public class UserCreateRequest {
 
     @NotEmpty
     @RolesIsValid
-    private Set<@NotBlank @Size(min = 9)  String> roles;
+    private Set<@NotBlank @Size(min = 4)  String> roles;
 }

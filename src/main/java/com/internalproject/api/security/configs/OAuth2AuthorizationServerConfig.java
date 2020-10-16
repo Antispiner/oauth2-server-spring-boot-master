@@ -28,10 +28,6 @@ import java.util.List;
 @Order(SecurityProperties.BASIC_AUTH_ORDER)
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    private final static Integer TOKEN_VALIDITY_SECONDS = 3600; // 1 hour
-    private final static Integer REFRESH_TOKEN_VALIDITY_SECONDS = 86400; // 1 day
-    private static final String GRANT_TYPE = "password";
-
     private final DataSource dataSource;
     private final SecurityCredentialConfig securityCredentialConfig;
     private final PasswordEncoder passwordEncoder;
@@ -77,17 +73,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource)
-        //TODO можно ли сделать конфиг таким образом, что бы при первом старте приложения, клиент вносился в базу из помяти, а потом смотрел в базу.
-                /*.passwordEncoder(passwordEncoder)
-                .withClient(securityCredentialConfig.getAppClientId())
-                .secret(securityCredentialConfig.getAppClientSecret())
-                .scopes("read", "write")
-                .authorizedGrantTypes(GRANT_TYPE, "refresh_token")
-                .accessTokenValiditySeconds(TOKEN_VALIDITY_SECONDS)
-                .refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDITY_SECONDS)
-                .and()
-                .build()*/;
+        clients.jdbc(dataSource);
     }
 
     private TokenGranter tokenGranter(final AuthorizationServerEndpointsConfigurer endpoints) {

@@ -13,31 +13,31 @@ create table oauth_client_details (
 );
 
 create table oauth_client_token (
-  token_id VARCHAR(255),
-  token BLOB,
-  authentication_id VARCHAR(255),
-  user_name VARCHAR(255),
-  client_id VARCHAR(255)
+  token_id VARCHAR(256),
+  token bytea,
+  authentication_id VARCHAR(256),
+  user_name VARCHAR(256),
+  client_id VARCHAR(256)
 );
 
 create table oauth_access_token (
   token_id VARCHAR(255),
-  token BLOB,
+  token bytea,
   authentication_id VARCHAR(255),
   user_name VARCHAR(255),
   client_id VARCHAR(255),
-  authentication BLOB,
+  authentication bytea,
   refresh_token VARCHAR(255)
 );
 
 create table oauth_refresh_token (
   token_id VARCHAR(255),
-  token BLOB,
-  authentication BLOB
+  token bytea,
+  authentication bytea
 );
 
 create table oauth_code (
-  code VARCHAR(255), authentication BLOB
+  code VARCHAR(255), authentication bytea
 );
 
 create table oauth_approvals (
@@ -45,6 +45,12 @@ create table oauth_approvals (
     clientId VARCHAR(255),
     scope VARCHAR(255),
     status VARCHAR(10),
-    expiresAt DATETIME,
-    lastModifiedAt DATETIME
+    expiresAt TIMESTAMP,
+    lastModifiedAt TIMESTAMP
 );
+
+INSERT INTO OAUTH_CLIENT_DETAILS(CLIENT_ID, RESOURCE_IDS, CLIENT_SECRET, SCOPE, AUTHORIZED_GRANT_TYPES, AUTHORITIES, ACCESS_TOKEN_VALIDITY, REFRESH_TOKEN_VALIDITY)
+ VALUES ('hiraeth-read-write-client', 'resource-server-rest-api',
+ /*hiraeth_client_secret*/'$2a$10$3zfBUKntYA.0xcxly3xivukSUy9Rta6pmKBaPL8yPQcwUQklbUZpi',
+ 'read,write', 'password,authorization_code,refresh_token,implicit', 'USER', 10800, 86400);
+COMMIT;

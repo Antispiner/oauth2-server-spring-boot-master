@@ -12,8 +12,9 @@ public class RolesValidatorImpl implements ConstraintValidator<RolesIsValid, Set
             return true;
         }
         for (String value : values) {
-            return value.equalsIgnoreCase("role_user") ||
-                    value.equalsIgnoreCase("role_admin");
+            return value.equalsIgnoreCase("ADMIN") ||
+                    value.equalsIgnoreCase("USER") ||
+                    value.equalsIgnoreCase("SUPER_ADMIN");
         }
         return false;
     }
