@@ -1,5 +1,6 @@
 package com.internalproject.api.model.security;
 
+import com.internalproject.api.enums.UserStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,12 +15,14 @@ public class SecurityUser implements UserDetails {
 
     private String userName;
     private String password;
+    private UserStatus status;
     private Set<String> roles;
 
-    public SecurityUser(String userName, String password, Set<String> roles) {
+    public SecurityUser(String userName, String password, Set<String> roles, UserStatus status) {
         this.userName = userName;
         this.password = password;
         this.roles = roles;
+        this.status = status;
     }
 
 
@@ -57,6 +60,6 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return status.equals(UserStatus.ACTIVE);
     }
 }

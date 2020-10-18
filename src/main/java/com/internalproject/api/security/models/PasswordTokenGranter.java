@@ -29,7 +29,6 @@ public class PasswordTokenGranter extends AbstractTokenGranter {
 
         Authentication userAuth = new UsernamePasswordAuthenticationToken(username, password);
         ((AbstractAuthenticationToken) userAuth).setDetails(requestParameters);
-
         try{
             userAuth = this.authenticationManager.authenticate(userAuth);
         }catch (AccountStatusException | BadCredentialsException e) {

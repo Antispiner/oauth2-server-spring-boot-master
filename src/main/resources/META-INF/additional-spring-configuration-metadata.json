@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "link.account.verify",
+      "type": "java.lang.String",
+      "description": "Description for link.account.verify."
+    },
+    {
+      "name": "link.url",
+      "type": "java.lang.String",
+      "description": "Description for link.url."
+    }
+  ] }

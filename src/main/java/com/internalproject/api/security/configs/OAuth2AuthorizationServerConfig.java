@@ -29,13 +29,11 @@ import java.util.List;
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final DataSource dataSource;
-    private final SecurityCredentialConfig securityCredentialConfig;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     public OAuth2AuthorizationServerConfig(DataSource dataSource, SecurityCredentialConfig securityCredentialConfig, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
         this.dataSource = dataSource;
-        this.securityCredentialConfig = securityCredentialConfig;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
     }

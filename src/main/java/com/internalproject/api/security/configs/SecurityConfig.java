@@ -1,6 +1,7 @@
 package com.internalproject.api.security.configs;
 
 
+import com.internalproject.api.security.CustomDaoAuthenticationProvider;
 import com.internalproject.api.security.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public CustomDaoAuthenticationProvider daoAuthenticationProvider() {
+        CustomDaoAuthenticationProvider authenticationProvider = new CustomDaoAuthenticationProvider();
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        return authenticationProvider;
+    }
+
+    @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
@@ -39,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider());
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
@@ -49,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     private static final String[] AUTH_WHITELIST = {
             "/swagger-resources/**",
+            "/resources/**",
             "/swagger-ui.html",
             "/v2/api-docs",
             "/webjars/**"
