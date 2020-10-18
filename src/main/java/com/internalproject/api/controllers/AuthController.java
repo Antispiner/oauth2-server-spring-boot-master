@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Api(value = "Authentication controller")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api-test")
 public class AuthController {
 
     private final TokenEndpoint tokenEndPoint;

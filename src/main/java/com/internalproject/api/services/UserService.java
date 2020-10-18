@@ -5,4 +5,6 @@ import com.internalproject.api.model.entity.user.User;
 
 public interface UserService {
     User create(UserCreateRequest request);
+
+    User verifyUser(String key);
 }

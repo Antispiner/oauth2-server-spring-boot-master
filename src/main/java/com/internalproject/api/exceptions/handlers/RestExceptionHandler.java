@@ -48,7 +48,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         detailError.setDetail("Input validation failed");
         detailError.setDeveloperMessage(ex.getClass().getName());
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
-        for(FieldError fe : fieldErrors) {
+        for (FieldError fe : fieldErrors) {
             List<ValidationError> validationErrorList = detailError.getErrors().
                     computeIfAbsent(fe.getField(), k -> new ArrayList<>());
             ValidationError validationError = new ValidationError();
