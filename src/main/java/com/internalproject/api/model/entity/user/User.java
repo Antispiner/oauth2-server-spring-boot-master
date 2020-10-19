@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "users")
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false, of = {"lastName", "email"})
+@EqualsAndHashCode(of = {"lastName", "email"})
 @ToString(of = {"lastName", "email"})
 public class User implements BaseEntity {
 

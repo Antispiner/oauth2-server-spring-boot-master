@@ -14,7 +14,7 @@ import java.util.Map;
 @Getter
 public class NotificationUtil {
 
-    private Map<MessageType, Map<Language,Message>> message;
+    private final Map<MessageType, Map<Language,Message>> message;
 
     public NotificationUtil() {
         this.message = new HashMap<>();
@@ -31,7 +31,7 @@ public class NotificationUtil {
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
-    public class Message{
+    public static class Message{
         private String title;
         private String body;
     }

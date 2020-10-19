@@ -29,10 +29,6 @@ public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenti
         setPasswordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
     }
 
-    // ~ Methods
-    // ========================================================================================================
-
-    @SuppressWarnings("deprecation")
     protected void additionalAuthenticationChecks(UserDetails userDetails,
                                                   UsernamePasswordAuthenticationToken authentication)
             throws AuthenticationException {
@@ -109,13 +105,7 @@ public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenti
         }
     }
 
-    /**
-     * Sets the PasswordEncoder instance to be used to encode and validate passwords. If
-     * not set, the password will be compared using {@link PasswordEncoderFactories#createDelegatingPasswordEncoder()}
-     *
-     * @param passwordEncoder must be an instance of one of the {@code PasswordEncoder}
-     * types.
-     */
+
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         Assert.notNull(passwordEncoder, "passwordEncoder cannot be null");
         this.passwordEncoder = passwordEncoder;
@@ -130,7 +120,7 @@ public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenti
         this.userDetailsService = userDetailsService;
     }
 
-    protected UserDetailsService getUserDetailsService() {
+    private UserDetailsService getUserDetailsService() {
         return userDetailsService;
     }
 

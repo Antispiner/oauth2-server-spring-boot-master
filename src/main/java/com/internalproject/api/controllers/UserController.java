@@ -6,23 +6,17 @@ import com.internalproject.api.domain.dto.UserDto;
 import com.internalproject.api.domain.requests.UserCreateRequest;
 import com.internalproject.api.enums.Language;
 import com.internalproject.api.model.entity.user.User;
-import com.internalproject.api.security.models.PasswordTokenGranter;
 import com.internalproject.api.services.impl.UserServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.security.Principal;
-import java.util.Map;
 
 @Api(value = "User rest controller")
 @RestController
@@ -45,8 +39,6 @@ public class UserController {
         this.userConverter = userConverter;
     }
 
-    @Autowired
-    TokenEndpoint tokenEndPoint;
 
     @ApiOperation(value = "Endpoint to create users.", response = NotificationDTO.class, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponses(value = {

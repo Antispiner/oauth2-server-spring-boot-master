@@ -12,7 +12,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     private static final String RESOURCE_ID = "resource-server-rest-api";
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+    public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(RESOURCE_ID).stateless(false);
     }
 
@@ -21,6 +21,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/api/login").hasAnyRole("USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/users/**").permitAll()
                 .antMatchers("/**", "/resources/**" , "/csrf", "/v2/api-docs", "/swagger-resources/configuration/ui", "/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()

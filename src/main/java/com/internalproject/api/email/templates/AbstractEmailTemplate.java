@@ -7,9 +7,9 @@ import org.thymeleaf.context.Context;
 @Getter
 public abstract class AbstractEmailTemplate implements EmailTemplate {
 
-    private String htmlForm;
+    private final String htmlForm;
 
-    protected Context context = new Context();
+    protected final Context context = new Context();
 
     AbstractEmailTemplate(String htmlForm) {
         this.htmlForm = htmlForm;

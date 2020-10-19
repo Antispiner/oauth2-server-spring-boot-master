@@ -10,12 +10,6 @@ public class FlywayConfig {
 
     @Bean
     public FlywayMigrationStrategy cleanMigrateStrategy() {
-        return new FlywayMigrationStrategy() {
-            @Override
-            public void migrate(Flyway flyway) {
-//                flyway.clean();
-                flyway.migrate();
-            }
-        };
+        return Flyway::migrate;
     }
 }

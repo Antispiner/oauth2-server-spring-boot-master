@@ -5,8 +5,6 @@ import com.internalproject.api.domain.dto.UserDto;
 import com.internalproject.api.model.entity.user.User;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
-
 @Component
 public class UserConverterImpl implements UserConverter {
 

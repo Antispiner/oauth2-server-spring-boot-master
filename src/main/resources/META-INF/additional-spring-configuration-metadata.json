@@ -9,5 +9,10 @@
       "name": "link.url",
       "type": "java.lang.String",
       "description": "Description for link.url."
+    },
+    {
+      "name": "spring.security.oauth2.resource.filter-order",
+      "type": "java.lang.String",
+      "description": "Description for spring.security.oauth2.resource.filter-order."
     }
   ] }
