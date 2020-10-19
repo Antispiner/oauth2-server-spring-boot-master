@@ -26,6 +26,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.internalproject.api.exceptions.ExceptionContent.INVALID_VERIFICATION_KEY;
+import static com.internalproject.api.exceptions.ExceptionContent.USER_ALREADY_EXIST;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -59,13 +60,14 @@ public class UserServiceImpl implements UserService {
     public User create(UserCreateRequest request) {
         boolean existsUserByUserName = userRepository.existsUserByUserNameAndEmail(request.getUsername(), request.getEmail());
         if (existsUserByUserName) {
-            throw new IllegalArgumentException("User with username " + request.getUsername() + "email "+ request.getEmail() + " already existed!");
+            throw new ApiException(USER_ALREADY_EXIST, HttpStatus.BAD_REQUEST);
         }
 
         User user = new User();
         String verificationKey = verificationService.generateKey(request.getEmail());
         user.setVerificationKey(verificationKey);
         user.setUserName(request.getUsername());
+        user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());
         user.setStatus(UserStatus.WAITING_FOR_CONFIRMATION);

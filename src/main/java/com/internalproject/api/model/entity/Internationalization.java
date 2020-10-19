@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "internationalization")
 @Getter
 @Setter
-public class Internationalization {
+class Internationalization {
 
     @Id
     @SequenceGenerator(name = "pk_sequence", sequenceName = "internationalization_internationalization_id_seq", allocationSize = 1)

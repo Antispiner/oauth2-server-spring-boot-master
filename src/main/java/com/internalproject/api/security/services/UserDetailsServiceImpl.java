@@ -1,16 +1,10 @@
 package com.internalproject.api.security.services;
 
 import com.internalproject.api.enums.UserStatus;
-import com.internalproject.api.exceptions.ExceptionContent;
-import com.internalproject.api.exceptions.models.ApiException;
 import com.internalproject.api.model.entity.user.User;
 import com.internalproject.api.repository.user.UserRepository;
 import com.internalproject.api.model.security.SecurityUser;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

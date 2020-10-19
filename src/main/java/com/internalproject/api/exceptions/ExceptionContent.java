@@ -10,11 +10,11 @@ import java.util.Locale;
 public enum ExceptionContent {
 
     INVALID_VERIFICATION_KEY("api.exception.invalidVerificationKey"),
+    USER_ALREADY_EXIST("api.exception.userAlreadyExist"),
     CHECK_EMAIL_AND_VALID("api.exception.checkEmailAndValid"),
     USER_INACTIVE_ERROR("api.exception.accountStatusNotActive");
 
-
-    private String path;
+    private final String path;
     static MessageSource messageSource;
 
     ExceptionContent(String path) {
@@ -27,9 +27,6 @@ public enum ExceptionContent {
 
     public String getText(){
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage(path, null,locale);
-    }
-    public String getText(Locale locale){
         return messageSource.getMessage(path, null,locale);
     }
 }

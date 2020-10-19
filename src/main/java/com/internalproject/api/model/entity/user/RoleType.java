@@ -4,5 +4,5 @@ public enum RoleType {
     PRE_ACTIVE,
     USER,
     ADMIN,
-    SUPER_ADMIN;
+    SUPER_ADMIN
 }

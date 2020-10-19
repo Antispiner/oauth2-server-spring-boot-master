@@ -13,10 +13,10 @@ import static java.util.stream.Collectors.toList;
 public class SecurityUser implements UserDetails {
 
 
-    private String userName;
-    private String password;
-    private UserStatus status;
-    private Set<String> roles;
+    private final String userName;
+    private final String password;
+    private final UserStatus status;
+    private final Set<String> roles;
 
     public SecurityUser(String userName, String password, Set<String> roles, UserStatus status) {
         this.userName = userName;

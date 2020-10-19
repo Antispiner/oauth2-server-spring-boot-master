@@ -1,5 +1,6 @@
 package com.internalproject.api.exceptions.handlers;
 
+import com.internalproject.api.exceptions.models.ApiException;
 import com.internalproject.api.exceptions.models.DetailError;
 import com.internalproject.api.exceptions.models.ValidationError;
 import org.springframework.context.MessageSource;
@@ -10,6 +11,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -57,5 +59,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             validationErrorList.add(validationError);
         }
         return handleExceptionInternal(ex, detailError, headers, status, request);
+    }
+
+    //TODO доделать обработку своего исключения
+    @ExceptionHandler({ ApiException.class })
+    public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
+        DetailError detailError = new DetailError();
+        detailError.setTitle(((ApiException) ex).getType().getText());
+        detailError.setTimeStamp(new Date().getTime());
+        detailError.setDetail(ex.getMessage());
+        detailError.setDeveloperMessage(ex.getClass().getName());
+        return new ResponseEntity<>(
+                detailError, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 }
